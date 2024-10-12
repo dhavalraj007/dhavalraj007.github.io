@@ -1,1 +1,83 @@
-yo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog/Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1e1e1e; /* Dark gray background */
+            color: #dae7f5;
+        }
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #dae7f5, #9ac5f0); /* Title gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(30, 28, 28, 0.1); /* Subtle text shadow */
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -10px; /* Position below the text */
+            height: 1px; /* Thickness of the underline */
+            background-color: #ffffff; /* Underline color */
+            border-radius: 5px;
+        }
+        .blog-container {
+            background-color: #242424; /* Lighter gray box */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the box */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        }
+        .blog-list {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        .blog-list li {
+            margin: 10px 0;
+            position: relative; /* For positioning the tag */
+        }
+        a {
+            text-decoration: none;
+            color: #fff; /* Light blue links */
+            font-size: 18px;
+            transition: color 0.3s; /* Smooth transition for hover */
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #9ac5f0; /* Dark blue on hover */
+        }
+        .tag {
+            background-color: #343434; /* Dark blue tag color */
+            color: #fff; /* White text for contrast */
+            border-radius: 5px;
+            margin-left: 5px;
+            padding: 5px 10px; /* Padding inside the tag */
+            font-size: 14px;
+        }
+    </style>        
+</head>
+<body>
+    <div class="title">Blog/Notes</div>
+    <div class="blog-container">
+        <ul class="blog-list">
+            <li><a href="pointerValues.html">Pointer Value, reinterpret_cast, and some laundering, etc.</a><span class="tag">C++</span></li>
+        </ul>
+    </div>
+</body>
+</html>
