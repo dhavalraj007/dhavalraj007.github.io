@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>tidbit 1: The Locus of a Declaration</title>
+    <title>Pick Partners</title>
     <style>
         .sticky-footer {
         position: fixed;
@@ -214,39 +214,51 @@
 </head>
 
 <body>
-    <h1 class="title"> tidbit 1: The Locus of a Declaration</h1>
+    <h1 class="title">Pick Partners</h1>
 
     <div class="blog-container">
-        <p>Consider the following code(from <a
-                href=https://eel.is/c++draft/basic.scope.pdecl#1>basic.scope.pdecl#1</a>):</p>
+        <p>Lets say, We have <strong>4 tennis players</strong> and want to form <strong>2 doubles teams</strong>. How many ways can this be done?</p>
 
-        <pre><code>unsigned char x = 12;
-{ unsigned char x = x; }</code></pre>
-
-        <p>
-            This code exhibits <strong>undefined behavior</strong> because of the following two rules:
-        </p>
-
+        <p>It turns out there are <strong>3 possible ways</strong>:</p>
         <ul>
-            <li>
-                The locus of a declaration that is a declarator is immediately after the complete declarator <a
-                    href="https://eel.is/c++draft/basic.scope.pdecl#1">.</a>
-            </li>
-            <li>
-                A program point P is said to follow any declaration in the same translation unit whose locus is before
-                P<a href="https://eel.is/c++draft/basic.lookup#general-2">.</a>
-            </li>
+            <li><strong>Team 1:</strong> (A, B) and <strong>Team 2:</strong> (C, D)</li>
+            <li><strong>Team 1:</strong> (A, C) and <strong>Team 2:</strong> (B, D)</li>
+            <li><strong>Team 1:</strong> (A, D) and <strong>Team 2:</strong> (B, C)</li>
         </ul>
 
-        <p>
-            In the example above, when initializing the second <code>x</code>, name lookup also includes the second
-            <code>x</code> itself.
-            By the rules of C++ name lookup, this <code>x</code> is considered a better match, but it is not yet
-            initialized.
-            Therefore, using it in its own initializer leads to <strong>undefined behavior</strong>.
-        </p>
+        <p>The general formula to calculate the number of ways to pair <code>n</code> players into doubles teams is:</p>
 
+        <pre><code>n! / ((2!)^(n/2) * (n/2)!)</code></pre>
+
+        <p>Here, <code>n</code> is the total number of players. For 4 players, we get:</p>
+
+        <pre><code>4! / ((2!)^(4/2) * (4/2)!)
+= 24 / (4 * 2)
+= 3</code></pre>
+
+        <p>So there are 3 ways to form 2 doubles teams from 4 players.</p>
+
+        <h3>How this formula is derived</h3>
+        <ul>
+            <li>There are <code>n!</code> ways to arrange all <code>n</code> players (order matters and no repetitions).</li>
+            <li>We pair them into groups of 2. Since the order <em>within each pair</em> doesn't matter, divide by <code>2!</code> for each of the <code>n/2</code> pairs.</li>
+            <li>The order among the pairs themselves also doesn't matter, so divide by <code>(n/2)!</code>.</li>
+        </ul>
+
+        <h3>Another elegant way to think about it</h3>
+        <p>Step-by-step pairing:</p>
+        <ul>
+            <li>Start with the smallest-numbered player (say A). They can pair with any of the remaining <code>n-1</code> players (B, C, or D). For example, pair with C.</li>
+            <li>Move to the next smallest player who hasn't been paired yet (say B). They can pair with any of the remaining <code>n-3</code> players (D).</li>
+            <li>Repeat until all players are paired. The number of ways is:</li>
+        </ul>
+
+        <pre><code>(n-1) * (n-3) * (n-5) * ... * 1</code></pre>
+
+        <p>This matches the formula above and feels more intuitive.</p>
+        <p>This formula above is also called double factorial some times( (n-1)!! ).</p>
     </div>
+
     <div class="sticky-footer collapsible">
         <div class="footer-collapse-indicator">▼</div>
         <div class="footer-content">

@@ -72,10 +72,134 @@
         }
         .footer {
             position: fixed;
-            padding: 5px;
             bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
             text-align: center;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
         }
+
+        .footer.collapsible {
+            transform: translateY(calc(100% - 40px));
+            cursor: pointer;
+        }
+
+        .footer.collapsible:hover {
+            transform: translateY(0);
+        }
+
+        .footer.collapsible .footer-content {
+            opacity: 0.7;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .footer.collapsible:hover .footer-content {
+            opacity: 1;
+        }
+
+        .footer-collapse-indicator {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ac5f0;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .footer.collapsible .footer-collapse-indicator {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer-brand {
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #dae7f5, #9ac5f0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 3px;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-links a {
+        color: #9ac5f0;
+        text-decoration: none;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        padding: 6px 12px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-links a:hover {
+        color: #dae7f5;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer-contact {
+        color: #999;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .footer-contact a {
+        color: #9ac5f0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+        color: #dae7f5;
+    }
+
+    @media (max-width: 768px) {
+        .footer {
+            padding: 12px 10px;
+        }
+        
+        .footer-links {
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+    }
 
     </style>        
 </head>
@@ -86,10 +210,23 @@
             <li><a href="pointerValues.html">Pointer Value, reinterpret_cast, and some laundering, etc.</a><span class="tag">C++</span></li>
             <li><a href="functionParams_AbseilTips117_148.html">How to take function parameters (my takeaway from Abseil tips 117,148)</a><span class="tag">C++</span></li>
             <li><a href="tidbit_1.html">tidbit 1 : The Locus of a Declaration</a><span class="tag">C++</span></li>
+            <li><a href="tidbit_2.html">tidbit 2 : User provided functions</a><span class="tag">C++</span></li>
+            <li><a href="pickPartners.html">Pick Partners</a><span class="tag">Math</span></li>
+
         </ul>
+
     </div>
     <footer class="footer">
-        <p><a href="mailto:rdjcoding@gmail.com">rdjcoding@gmail.com</a></p>
-      </footer> 
+        <div class="footer-content">
+            <div class="footer-brand">RDJ's Blog</div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="https://github.com/dhavalraj007" target="_blank">GitHub</a>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:rdjcoding@gmail.com">rdjcoding@gmail.com</a>
+            </div>
+        </div>
+    </footer> 
 </body>
 </html>
